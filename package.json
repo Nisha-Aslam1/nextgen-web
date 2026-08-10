@@ -1,0 +1,13 @@
+{
+  "name": "nextgen-web",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "node --check netlify/functions/*.js netlify/functions/_lib/*.js api/*.js api/_lib/*.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.4",
+    "busboy": "^1.6.0"
+  },
+  "devDependencies": {}
+}
