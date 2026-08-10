@@ -132,6 +132,7 @@ async function ensureApplicationStorageAndDatabase(supabase) {
 }
 
 async function insertApplicationWithPostgres(row) {
+  await ensureDatabaseTables();
   const connectionString = postgresUrl();
   if (!connectionString) {
     throw new Error('Missing POSTGRES_URL_NON_POOLING / POSTGRES_URL for database insert fallback.');
@@ -164,4 +165,4 @@ async function insertApplicationWithPostgres(row) {
   }
 }
 
-module.exports = { ensureApplicationStorageAndDatabase, insertApplicationWithPostgres };
+module.exports = { ensureApplicationStorageAndDatabase, ensureStorageBucket, insertApplicationWithPostgres };

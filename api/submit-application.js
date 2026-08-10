@@ -1,7 +1,7 @@
 const crypto = require('crypto');
 const { parseMultipart } = require('./_lib/multipart');
 const { BUCKET, getSupabase, method, sanitizeApplication, send, validateApplication } = require('./_lib/config');
-const { ensureApplicationStorageAndDatabase, insertApplicationWithPostgres } = require('./_lib/setup');
+const { ensureStorageBucket, insertApplicationWithPostgres } = require('./_lib/setup');
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024;
 const ALLOWED_TYPES = new Set(['image/jpeg', 'image/png', 'image/webp', 'application/pdf']);
@@ -55,7 +55,7 @@ async function handler(req, res) {
     if (Object.keys(errors).length) return send(res, 400, { error: 'Please fix the highlighted fields.', errors });
 
     supabase = getSupabase();
-    await ensureApplicationStorageAndDatabase(supabase);
+    await ensureStorageBucket(supabase);
     const reference = `NG-${Date.now().toString(36).toUpperCase()}-${crypto.randomBytes(3).toString('hex').toUpperCase()}`;
     for (const file of files.filter(f => f.buffer.length)) {
       if (!ALLOWED_TYPES.has(file.mimeType) || file.truncated || file.buffer.length > MAX_FILE_SIZE) continue;
