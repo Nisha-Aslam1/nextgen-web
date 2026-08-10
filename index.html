@@ -1029,15 +1029,16 @@
     nextBtn.textContent = 'Submitting…';
 
     try {
-      const payload = new FormData(form);
-      payload.delete('skills');
-      payload.delete('interestAreas');
-      [...form.querySelectorAll('input[name="skills"]:checked')].forEach(input => payload.append('skills', input.value));
-      [...form.querySelectorAll('input[name="interestAreas"]:checked')].forEach(input => payload.append('interestAreas', input.value));
+      const payload = Object.fromEntries(new FormData(form).entries());
+      payload.skills = [...form.querySelectorAll('input[name="skills"]:checked')].map(input => input.value);
+      payload.interestAreas = [...form.querySelectorAll('input[name="interestAreas"]:checked')].map(input => input.value);
+      payload.paymentScreenshotData = paymentScreenshotData;
+      delete payload.paymentScreenshot;
 
       const response = await fetch('/api/submit-application', {
         method: 'POST',
-        body: payload
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
       });
       const result = await response.json().catch(() => ({}));
       if (!response.ok) {

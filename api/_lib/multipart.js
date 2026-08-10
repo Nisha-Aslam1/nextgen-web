@@ -10,6 +10,10 @@ function feedBusboy(busboy, req) {
     Readable.from(Buffer.from(req.body, 'utf8')).pipe(busboy);
     return;
   }
+  if (typeof req.pipe !== 'function') {
+    busboy.destroy(new Error('Multipart request stream is unavailable.')) ;
+    return;
+  }
   req.pipe(busboy);
 }
 
