@@ -763,12 +763,11 @@
   </form>
 
   <footer>
-    NexGen Women Empowerment &amp; Youth Leadership Council · Your responses stay in this browser session
+    NexGen Women Empowerment &amp; Youth Leadership Council · Applications are submitted securely
     <div class="footer-tags">#NexGen #WomenEmpowerment #YouthLeadership #SkillDevelopment #ShapeTodayLeadTomorrow</div>
   </footer>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 (function(){
   const sectionTitles = [
@@ -1018,28 +1017,6 @@
     document.getElementById('reviewArea').innerHTML = html;
   }
 
-  // ====== SUPABASE CONNECTION ======
-  // 1. Create a free project at https://supabase.com
-  // 2. Run the SQL setup script (provided separately) in the Supabase SQL Editor
-  // 3. Paste your Project URL and anon/public API key below (Project Settings → API)
-  //    The anon key is SAFE to put in frontend code — it can only INSERT, never read/edit/delete,
-  //    because of the Row Level Security policies created by the SQL script.
-  const SUPABASE_URL = "PASTE_YOUR_SUPABASE_PROJECT_URL_HERE";
-  const SUPABASE_ANON_KEY = "PASTE_YOUR_SUPABASE_ANON_PUBLIC_KEY_HERE";
-
-  const supabaseClient = (SUPABASE_URL.startsWith('PASTE_') || SUPABASE_ANON_KEY.startsWith('PASTE_'))
-    ? null
-    : window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-  function dataUrlToBlob(dataUrl){
-    const [meta, b64] = dataUrl.split(',');
-    const mime = meta.match(/:(.*?);/)[1];
-    const bin = atob(b64);
-    const bytes = new Uint8Array(bin.length);
-    for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
-    return new Blob([bytes], { type: mime });
-  }
-
   let isSubmitting = false;
 
   async function submitForm(){
@@ -1051,77 +1028,33 @@
     const originalBtnText = nextBtn.textContent;
     nextBtn.textContent = 'Submitting…';
 
-    const ref = 'NG-' + Date.now().toString(36).toUpperCase();
-
     try {
-      if (!supabaseClient) {
-        throw new Error('Backend not configured yet. Please add your Supabase URL and anon key in the code (SUPABASE_URL / SUPABASE_ANON_KEY).');
+      const payload = new FormData(form);
+      payload.delete('skills');
+      payload.delete('interestAreas');
+      [...form.querySelectorAll('input[name="skills"]:checked')].forEach(input => payload.append('skills', input.value));
+      [...form.querySelectorAll('input[name="interestAreas"]:checked')].forEach(input => payload.append('interestAreas', input.value));
+
+      const response = await fetch('/.netlify/functions/submit-application', {
+        method: 'POST',
+        body: payload
+      });
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        if (result.errors) {
+          Object.keys(result.errors).forEach(name => {
+            const field = form.elements[name]?.closest?.('.field') || document.querySelector(`[name="${name}"]`)?.closest('.field');
+            if (field) field.classList.add('invalid');
+          });
+        }
+        throw new Error(result.error || 'Submission failed.');
       }
 
-      const data = Object.fromEntries(new FormData(form).entries());
-      data.skills = [...form.querySelectorAll('input[name="skills"]:checked')].map(i=>i.value).join(', ');
-      data.interestAreas = [...form.querySelectorAll('input[name="interestAreas"]:checked')].map(i=>i.value).join(', ');
-      delete data.paymentScreenshot; // raw file input value isn't useful, we upload the compressed image separately
-
-      // 1. Upload the payment screenshot to Supabase Storage (private bucket)
-      let screenshotPath = null;
-      if (paymentScreenshotData) {
-        const blob = dataUrlToBlob(paymentScreenshotData);
-        screenshotPath = `screenshots/${ref}-${Date.now()}.jpg`;
-        const { error: uploadError } = await supabaseClient
-          .storage
-          .from('payment-screenshots')
-          .upload(screenshotPath, blob, { contentType: 'image/jpeg', upsert: false });
-        if (uploadError) throw uploadError;
-      }
-
-      // 2. Insert the application row
-      const row = {
-        reference_code: ref,
-        sender_name: data.senderName || null,
-        txn_id: data.txnId || null,
-        full_name: data.fullName || null,
-        gender: data.gender || null,
-        gender_other: data.genderOther || null,
-        age: data.age || null,
-        city: data.city || null,
-        phone: data.phone || null,
-        email: data.email || null,
-        applicant_status: data.status || null,
-        applicant_status_other: data.statusOther || null,
-        association: data.association || null,
-        association_other: data.associationOther || null,
-        designation: data.designation || null,
-        heard_from: data.heardFrom || null,
-        heard_from_other: data.heardFromOther || null,
-        main_goal: data.mainGoal || null,
-        why_join: data.whyJoin || null,
-        want_learn: data.wantLearn || null,
-        skills: data.skills || null,
-        skills_other: data.skillsOther || null,
-        interest_areas: data.interestAreas || null,
-        interest_areas_other: data.interestAreasOther || null,
-        time_available: data.timeAvailable || null,
-        willing_active: data.willingActive || null,
-        willing_tasks: data.willingTasks || null,
-        opportunity: data.opportunity || null,
-        preferred_area: data.preferredArea || null,
-        join_volunteer: data.joinVolunteer || null,
-        why_volunteer: data.whyVolunteer || null,
-        willing_contribute: data.willingContribute || null,
-        expectations: data.expectations || null,
-        anything_else: data.anythingElse || null,
-        screenshot_path: screenshotPath
-      };
-
-      const { error: insertError } = await supabaseClient.from('applications').insert(row);
-      if (insertError) throw insertError;
-
-      document.getElementById('refCode').textContent = ref;
+      document.getElementById('refCode').textContent = result.reference;
       goTo(10);
     } catch (err) {
       console.error('Submission failed:', err);
-      submitErrorEl.textContent = 'Sorry, your registration could not be saved. Please check your internet connection and try again. If this keeps happening, please contact us directly with your details.';
+      submitErrorEl.textContent = err.message || 'Sorry, your registration could not be saved. Please check your internet connection and try again.';
       submitErrorEl.classList.add('show');
       submitErrorEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
     } finally {
