@@ -1,5 +1,5 @@
 const $ = (s) => document.querySelector(s);
-const api = (name, opts={}) => fetch(`/.netlify/functions/${name}`, { credentials:'include', headers:{'Content-Type':'application/json', ...(opts.headers||{})}, ...opts }).then(async r => { const j = await r.json().catch(()=>({})); if(!r.ok) throw new Error(j.error||'Request failed'); return j; });
+const api = (name, opts={}) => fetch(`/api/${name}`, { credentials:'include', headers:{'Content-Type':'application/json', ...(opts.headers||{})}, ...opts }).then(async r => { const j = await r.json().catch(()=>({})); if(!r.ok) throw new Error(j.error||'Request failed'); return j; });
 const statuses = ['Pending','Under Review','Approved','Rejected'];
 
 if ($('#loginForm')) {

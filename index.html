@@ -1035,7 +1035,7 @@
       [...form.querySelectorAll('input[name="skills"]:checked')].forEach(input => payload.append('skills', input.value));
       [...form.querySelectorAll('input[name="interestAreas"]:checked')].forEach(input => payload.append('interestAreas', input.value));
 
-      const response = await fetch('/.netlify/functions/submit-application', {
+      const response = await fetch('/api/submit-application', {
         method: 'POST',
         body: payload
       });
