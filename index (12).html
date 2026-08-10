@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NexGen Women Empowerment &amp; Youth Leadership Council — 30-Day Leadership Development Series</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1B3A5C;
+    --navy-deep:#102943;
+    --purple:#6A4C93;
+    --teal:#2E9E8F;
+    --gold:#C9A24B;
+    --gold-soft:#E4C687;
+    --bg:#F4F6F8;
+    --panel:#FFFFFF;
+    --ink:#1B2430;
+    --ink-soft:#5C6B7A;
+    --line:#DFE5EA;
+    --error:#B3372C;
+    --radius:14px;
+    --shadow: 0 14px 40px -18px rgba(16, 41, 67, 0.35);
+    /* legacy aliases used throughout the stylesheet */
+    --plum:var(--navy);
+    --plum-deep:var(--navy-deep);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .bg-texture{
+    position:fixed; inset:0; z-index:-1;
+    background:
+      radial-gradient(1100px 600px at 8% -10%, rgba(201,162,75,0.14), transparent 60%),
+      radial-gradient(900px 700px at 110% 15%, rgba(46,158,143,0.12), transparent 55%),
+      radial-gradient(700px 500px at 50% 120%, rgba(106,76,147,0.10), transparent 60%),
+      var(--bg);
+  }
+
+  /* ---------- Layout shell ---------- */
+  .shell{
+    max-width:1180px;
+    margin:0 auto;
+    padding:32px 24px 80px;
+    display:grid;
+    grid-template-columns: 300px 1fr;
+    gap:40px;
+  }
+  @media (max-width: 880px){
+    .shell{grid-template-columns:1fr; padding:20px 16px 60px;}
+  }
+
+  /* ---------- Header ---------- */
+  .masthead{
+    grid-column:1/-1;
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap:20px;
+    padding-bottom:28px;
+    border-bottom:1px solid var(--line);
+    margin-bottom:8px;
+  }
+  .brand{display:flex; align-items:center; gap:14px;}
+  .brand-mark{
+    width:52px; height:52px; border-radius:50%; flex:none;
+    background:#fff; border:1px solid var(--line); box-shadow:var(--shadow);
+    display:flex; align-items:center; justify-content:center; overflow:hidden;
+  }
+  .brand-mark img{ width:100%; height:100%; object-fit:cover; }
+  .brand-text .eyebrow{
+    font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--teal); font-weight:600;
+  }
+  .brand-text h1{
+    font-family:'Fraunces', serif; font-weight:600; font-size:22px; margin:2px 0 0; letter-spacing:-.01em;
+  }
+  .masthead-sub{
+    font-size:14px; color:var(--ink-soft); max-width:340px; text-align:right; line-height:1.5;
+  }
+  @media (max-width:640px){ .masthead{flex-direction:column; align-items:flex-start;} .masthead-sub{text-align:left;} }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    grid-column:1/-1;
+    background: linear-gradient(120deg, var(--plum-deep), var(--plum) 65%);
+    border-radius:20px;
+    padding:44px 40px;
+    color:#fff;
+    position:relative;
+    overflow:hidden;
+    margin-bottom:8px;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; right:-60px; top:-60px; width:260px; height:260px; border-radius:50%;
+    background:radial-gradient(circle, rgba(227,162,60,0.5), transparent 70%);
+  }
+  .hero-kicker{
+    font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--gold-soft); font-weight:600;
+    display:flex; align-items:center; gap:10px;
+  }
+  .hero-kicker .dot{width:6px; height:6px; border-radius:50%; background:var(--gold-soft);}
+  .hero h2{
+    font-family:'Fraunces', serif; font-weight:600; font-size:clamp(28px, 4vw, 40px);
+    margin:12px 0 10px; max-width:640px; line-height:1.12; letter-spacing:-.01em;
+  }
+  .hero p{max-width:560px; color:rgba(255,255,255,.82); font-size:15.5px; line-height:1.6; margin:0 0 22px;}
+  .hero-stats{display:flex; gap:28px; flex-wrap:wrap; position:relative; z-index:1;}
+  .hero-stat b{font-family:'Fraunces', serif; font-size:22px; font-weight:600; display:block;}
+  .hero-stat span{font-size:12px; color:rgba(255,255,255,.7);}
+
+  /* ---------- Sidebar: journey path ---------- */
+  .path-nav{
+    background:var(--panel); border-radius:var(--radius); padding:22px 18px;
+    box-shadow:var(--shadow); border:1px solid var(--line);
+  }
+  .path-nav h3{
+    font-family:'Fraunces', serif; font-size:14px; font-weight:600; margin:0 0 4px; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-soft);
+  }
+  .path-nav .path-sub{font-size:12px; color:var(--ink-soft); margin:0 0 18px;}
+  .path-track{position:relative; padding-left:6px;}
+  .path-item{
+    position:relative; padding:0 0 26px 30px; cursor:pointer;
+  }
+  .path-item:last-child{padding-bottom:0;}
+  .path-item::before{ /* connecting line */
+    content:""; position:absolute; left:9px; top:22px; bottom:-4px; width:2px; background:var(--line);
+  }
+  .path-item:last-child::before{display:none;}
+  .path-item.done::before{background:var(--teal);}
+  .path-dot{
+    position:absolute; left:0; top:1px; width:20px; height:20px; border-radius:50%;
+    background:#fff; border:2px solid var(--line); display:flex; align-items:center; justify-content:center;
+    font-size:10px; font-weight:700; color:var(--ink-soft); transition:.2s;
+  }
+  .path-item.active .path-dot{border-color:var(--gold); background:var(--gold); color:#fff;}
+  .path-item.done .path-dot{border-color:var(--teal); background:var(--teal); color:#fff;}
+  .path-label{font-size:13.5px; font-weight:600; color:var(--ink-soft); line-height:1.35;}
+  .path-item.active .path-label{color:var(--plum-deep);}
+  .path-item.done .path-label{color:var(--ink);}
+
+  /* ---------- Form panel ---------- */
+  .panel{
+    background:var(--panel); border-radius:var(--radius); box-shadow:var(--shadow);
+    border:1px solid var(--line); padding:38px 40px 32px; min-height:520px;
+    display:flex; flex-direction:column;
+  }
+  @media (max-width:560px){ .panel{padding:26px 20px 22px;} }
+
+  .step{ display:none; animation:rise .35s ease; }
+  .step.active{ display:block; }
+  @keyframes rise{ from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:translateY(0);} }
+
+  .step-eyebrow{ font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); font-weight:700; }
+  .step h2{ font-family:'Fraunces', serif; font-size:26px; font-weight:600; margin:6px 0 6px; letter-spacing:-.01em; }
+  .step > .step-intro{ color:var(--ink-soft); font-size:14.5px; margin:0 0 26px; max-width:520px; line-height:1.55; }
+
+  .field{ margin-bottom:22px; }
+  .field label{ display:block; font-size:14px; font-weight:600; margin-bottom:8px; color:var(--ink); }
+  .field label .req{ color:var(--error); margin-left:2px; }
+  .field .hint{ font-size:12.5px; color:var(--ink-soft); margin:-4px 0 8px; }
+
+  input[type=text], input[type=email], input[type=tel], input[type=number], textarea, select{
+    width:100%; padding:12px 14px; border:1.5px solid var(--line); border-radius:10px;
+    font-family:'Work Sans', sans-serif; font-size:14.5px; color:var(--ink); background:#FCFAFD;
+    transition:.15s;
+  }
+  textarea{ min-height:96px; resize:vertical; }
+  input:focus, textarea:focus, select:focus{
+    outline:none; border-color:var(--plum); box-shadow:0 0 0 4px rgba(91,32,73,0.1); background:#fff;
+  }
+  select{ appearance:none; background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='9'><path d='M1 1l6 6 6-6' stroke='%236B5E6F' stroke-width='1.6' fill='none' fill-rule='evenodd'/></svg>"); background-repeat:no-repeat; background-position:right 14px center; padding-right:36px; }
+
+  .choice-grid{ display:flex; flex-wrap:wrap; gap:10px; }
+  .choice{
+    border:1.5px solid var(--line); border-radius:10px; padding:10px 16px; font-size:14px; cursor:pointer;
+    background:#FCFAFD; transition:.15s; user-select:none; display:flex; align-items:center; gap:8px;
+  }
+  .choice:hover{ border-color:var(--gold); }
+  .choice input{ accent-color:var(--plum); margin:0; }
+  .choice.selected{ border-color:var(--plum); background:rgba(91,32,73,0.06); font-weight:600; }
+
+  .other-inline{ margin-top:10px; display:none; }
+  .other-inline.show{ display:block; }
+
+  /* ---------- Payment step ---------- */
+  .payment-box{
+    background:linear-gradient(135deg, rgba(201,162,75,0.10), rgba(46,158,143,0.08));
+    border:1.5px solid var(--gold-soft); border-radius:12px; padding:18px 22px; margin:0 0 26px;
+  }
+  .payment-row{
+    display:flex; justify-content:space-between; align-items:center; gap:14px; padding:9px 0;
+    border-bottom:1px dashed rgba(201,162,75,0.4); font-size:14.5px;
+  }
+  .payment-row:last-child{ border-bottom:none; }
+  .payment-row .pk{ color:var(--ink-soft); font-weight:500; }
+  .payment-row .pv{ font-family:'Fraunces', serif; font-weight:600; color:var(--navy-deep); font-size:15.5px; letter-spacing:.01em; }
+  .payment-note{ font-size:12.5px; color:var(--ink-soft); margin:12px 0 26px; line-height:1.55; background:#FCF8EE; border:1px solid var(--gold-soft); border-radius:10px; padding:12px 14px; }
+
+  input[type=file]{
+    width:100%; padding:12px 14px; border:1.5px dashed var(--line); border-radius:10px;
+    font-family:'Work Sans', sans-serif; font-size:13.5px; color:var(--ink-soft); background:#FCFAFD; cursor:pointer;
+  }
+  input[type=file]:focus{ outline:none; border-color:var(--plum); }
+  .screenshot-preview{ margin-top:12px; display:none; align-items:center; gap:12px; }
+  .screenshot-preview.show{ display:flex; }
+  .screenshot-preview img{ width:72px; height:72px; object-fit:cover; border-radius:8px; border:1.5px solid var(--line); box-shadow:var(--shadow); }
+  .screenshot-preview .sp-info{ font-size:12.5px; color:var(--teal); font-weight:600; }
+  .screenshot-preview .sp-info small{ display:block; color:var(--ink-soft); font-weight:400; margin-top:2px; }
+  .upload-progress{ font-size:12.5px; color:var(--ink-soft); margin-top:8px; display:none; }
+  .upload-progress.show{ display:block; }
+  .submit-error{
+    display:none; margin-top:16px; padding:12px 14px; border-radius:10px;
+    background:rgba(179,55,44,0.08); border:1px solid rgba(179,55,44,0.35);
+    color:var(--error); font-size:13.5px; line-height:1.5;
+  }
+  .submit-error.show{ display:block; }
+
+  .field-error{ color:var(--error); font-size:12.5px; margin-top:6px; display:none; }
+  .field.invalid input, .field.invalid textarea, .field.invalid select{ border-color:var(--error); background:#FCF4F3; }
+  .field.invalid .field-error{ display:block; }
+
+  /* ---------- Nav buttons ---------- */
+  .step-actions{
+    margin-top:auto; padding-top:24px; display:flex; justify-content:space-between; align-items:center; gap:12px;
+    border-top:1px dashed var(--line);
+  }
+  .btn{
+    font-family:'Work Sans', sans-serif; font-weight:600; font-size:14.5px; padding:12px 22px; border-radius:10px;
+    border:none; cursor:pointer; transition:.15s; display:inline-flex; align-items:center; gap:8px;
+  }
+  .btn-primary{ background:var(--plum); color:#fff; }
+  .btn-primary:hover{ background:var(--plum-deep); }
+  .btn-ghost{ background:transparent; color:var(--ink-soft); }
+  .btn-ghost:hover{ color:var(--ink); }
+  .btn-gold{ background:var(--gold); color:#3C2500; }
+  .btn-gold:hover{ background:#cf8f30; }
+  .btn:disabled{ opacity:.45; cursor:not-allowed; }
+  .step-count{ font-size:12.5px; color:var(--ink-soft); }
+
+  /* ---------- Review page ---------- */
+  .review-group{ margin-bottom:22px; }
+  .review-group h4{
+    font-family:'Fraunces', serif; font-size:14px; font-weight:600; color:var(--teal); margin:0 0 10px;
+    text-transform:uppercase; letter-spacing:.05em; border-bottom:1px solid var(--line); padding-bottom:6px;
+  }
+  .review-row{ display:flex; gap:14px; padding:6px 0; font-size:14px; }
+  .review-row .rk{ flex:0 0 220px; color:var(--ink-soft); }
+  .review-row .rv{ flex:1; font-weight:500; color:var(--ink); white-space:pre-wrap; }
+  .review-row .rv.empty{ color:#B9AEBC; font-style:italic; font-weight:400; }
+
+  .consent-box{
+    background:rgba(227,162,60,0.08); border:1px solid rgba(227,162,60,0.4); border-radius:12px; padding:18px 20px; margin:18px 0 8px;
+  }
+  .consent-box label{ display:flex; gap:12px; align-items:flex-start; font-size:13.5px; line-height:1.55; color:var(--ink); cursor:pointer; }
+  .consent-box input{ margin-top:3px; accent-color:var(--plum); flex:none; }
+
+  /* ---------- Done screen ---------- */
+  .done-screen{ text-align:center; padding:50px 10px; }
+  .done-badge{
+    width:64px; height:64px; border-radius:50%; margin:0 auto 20px; background:var(--teal);
+    display:flex; align-items:center; justify-content:center; color:#fff; font-size:28px;
+  }
+  .done-screen h2{ font-family:'Fraunces', serif; font-size:26px; margin:0 0 10px; }
+  .done-screen p{ color:var(--ink-soft); max-width:420px; margin:0 auto 26px; line-height:1.6; }
+  .ref-code{ font-family:'Fraunces', serif; font-size:15px; background:var(--bg); border:1px dashed var(--line); padding:10px 18px; border-radius:10px; display:inline-block; margin-bottom:26px; }
+
+  footer{ grid-column:1/-1; text-align:center; font-size:12.5px; color:var(--ink-soft); padding-top:10px; }
+  .footer-tags{ margin-top:6px; color:#B9AEBC; }
+
+  /* ---------- Explore panel ---------- */
+  .explore-panel{
+    grid-column:1/-1; background:var(--panel); border:1px solid var(--line); border-radius:20px;
+    padding:32px 36px; box-shadow:var(--shadow); margin-bottom:8px;
+  }
+  .explore-head h3{ font-family:'Fraunces', serif; font-size:22px; font-weight:600; margin:6px 0 20px; letter-spacing:-.01em; }
+  .explore-grid{ display:grid; grid-template-columns:repeat(2, 1fr); gap:12px 28px; }
+  @media (max-width:720px){ .explore-grid{ grid-template-columns:1fr; } .explore-panel{ padding:26px 22px; } }
+  .explore-item{
+    display:flex; align-items:flex-start; gap:10px; font-size:14.5px; line-height:1.5; color:var(--ink);
+    padding:10px 0; border-bottom:1px dashed var(--line);
+  }
+  .explore-item .star{ flex:none; font-size:16px; line-height:1.4; }
+
+  .info-cols{ display:grid; grid-template-columns:repeat(3, 1fr); gap:0; padding:0; overflow:hidden; }
+  .info-col{ padding:30px 30px; }
+  .info-col:not(:last-child){ border-right:1px solid var(--line); }
+  .info-col .step-eyebrow{ display:block; margin-bottom:14px; color:var(--purple); }
+  .check-list{ list-style:none; margin:0; padding:0; }
+  .check-list li{
+    font-size:14px; line-height:1.5; color:var(--ink); padding:7px 0 7px 24px; position:relative;
+  }
+  .check-list li::before{
+    content:"✓"; position:absolute; left:0; top:7px; color:var(--teal); font-weight:700; font-size:13px;
+  }
+  @media (max-width:820px){
+    .info-cols{ grid-template-columns:1fr; }
+    .info-col:not(:last-child){ border-right:none; border-bottom:1px solid var(--line); }
+  }
+
+  .mission-band{
+    grid-column:1/-1; text-align:center; border-radius:20px; padding:44px 30px;
+    background:linear-gradient(120deg, var(--navy-deep), var(--purple) 120%);
+    color:#fff; margin-bottom:8px; position:relative; overflow:hidden;
+  }
+  .mission-band::before{
+    content:""; position:absolute; left:-80px; bottom:-80px; width:240px; height:240px; border-radius:50%;
+    background:radial-gradient(circle, rgba(46,158,143,0.45), transparent 70%);
+  }
+  .mission-eyebrow{ font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--gold-soft); font-weight:700; position:relative; z-index:1;}
+  .mission-text{
+    font-family:'Fraunces', serif; font-size:clamp(18px, 2.4vw, 24px); font-weight:500; line-height:1.5;
+    max-width:720px; margin:14px auto 20px; position:relative; z-index:1;
+  }
+  .mission-pillars{ display:flex; justify-content:center; gap:12px; font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:rgba(255,255,255,.75); font-weight:600; position:relative; z-index:1; }
+
+  @media (prefers-reduced-motion: reduce){
+    .step{ animation:none; }
+    html{ scroll-behavior:auto; }
+  }
+</style>
+</head>
+<body>
+<div class="bg-texture"></div>
+<div class="shell">
+
+  <div class="masthead">
+    <div class="brand">
+      <div class="brand-mark"><img src="logo.png" alt="NexGen Women Empowerment and Youth Leadership Council logo"></div>
+      <div class="brand-text">
+        <div class="eyebrow">NexGen Women Empowerment &amp; Youth Leadership Council</div>
+        <h1>30-Day Leadership Development Series</h1>
+      </div>
+    </div>
+    <div class="masthead-sub">Shaping Today. Learn Always. Lead Tomorrow.</div>
+  </div>
+
+  <div class="hero">
+    <div class="hero-kicker"><span class="dot"></span> Duration: 30 Days · Open for Male &amp; Female, Youth, Gen Z</div>
+    <h2>Start your journey. Discover yourself. Build your skills. Become a leader.</h2>
+    <p>NexGen Women Empowerment and Youth Leadership Council presents a 30-Day Leadership Development Series designed to help young people learn, grow, lead, and create a positive impact. Whether you're a student, professional, entrepreneur or volunteer — anyone passionate about learning and making an impact is welcome to join.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><b>30 days</b><span>the journey runs</span></div>
+      <div class="hero-stat"><b>M &amp; F</b><span>open to everyone</span></div>
+      <div class="hero-stat"><b>~6 min</b><span>to register</span></div>
+    </div>
+  </div>
+
+  <div class="explore-panel">
+    <div class="explore-head">
+      <span class="step-eyebrow">Throughout this journey</span>
+      <h3>What participants will explore</h3>
+    </div>
+    <div class="explore-grid">
+      <div class="explore-item"><span class="star">🚀</span>How to Start &amp; Discover Yourself</div>
+      <div class="explore-item"><span class="star">🎯</span>Goal Setting &amp; Productivity</div>
+      <div class="explore-item"><span class="star">📖</span>Islamic Values &amp; Leadership</div>
+      <div class="explore-item"><span class="star">🧠</span>Mindset, Confidence &amp; Emotional Control</div>
+      <div class="explore-item"><span class="star">🎤</span>Public Speaking &amp; Communication</div>
+      <div class="explore-item"><span class="star">👥</span>Practical Leadership Skills</div>
+      <div class="explore-item"><span class="star">💭</span>Mental Well-being</div>
+      <div class="explore-item"><span class="star">💡</span>Turning Ideas into Action</div>
+      <div class="explore-item"><span class="star">🌍</span>Community Leadership &amp; Positive Impact</div>
+    </div>
+  </div>
+
+  <div class="explore-panel info-cols">
+    <div class="info-col">
+      <span class="step-eyebrow">What you'll get</span>
+      <ul class="check-list">
+        <li>Expert-led sessions</li>
+        <li>Practical activities</li>
+        <li>Interactive discussions &amp; Q&amp;A</li>
+        <li>Personal and leadership growth</li>
+        <li>Opportunities to connect with like-minded youth</li>
+        <li>Certificate for participants who complete the 30-day series</li>
+      </ul>
+    </div>
+    <div class="info-col">
+      <span class="step-eyebrow">Who can join</span>
+      <ul class="check-list">
+        <li>Male &amp; Female</li>
+        <li>Students &amp; Professionals</li>
+        <li>Gen Z &amp; Young Leaders</li>
+        <li>Entrepreneurs &amp; Volunteers</li>
+        <li>Anyone passionate about learning and making an impact</li>
+      </ul>
+    </div>
+    <div class="info-col">
+      <span class="step-eyebrow">What you'll gain</span>
+      <ul class="check-list">
+        <li>Leadership &amp; Communication Skills</li>
+        <li>Personal &amp; Professional Development</li>
+        <li>Community Service Opportunities</li>
+        <li>Networking &amp; Mentorship</li>
+        <li>Teamwork &amp; Project Experience</li>
+        <li>Confidence Building</li>
+        <li>Recognition &amp; Certificates</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="mission-band">
+    <div class="mission-eyebrow">Our Mission</div>
+    <p class="mission-text">Shaping Today, Leading Tomorrow. We believe every person has the potential to become a confident leader and a positive force for change — join our Volunteer Department or Student Community to learn, serve, and grow.</p>
+    <div class="mission-pillars">
+      <span>Lead</span><span>·</span><span>Learn</span><span>·</span><span>Grow</span><span>·</span><span>Inspire</span>
+    </div>
+  </div>
+
+  <!-- Sidebar journey -->
+  <nav class="path-nav" aria-label="Form progress">
+    <h3>Your journey</h3>
+    <p class="path-sub">Step <span id="stepNowLabel">1</span> of 9</p>
+    <div class="path-track" id="pathTrack"></div>
+  </nav>
+
+  <!-- Form -->
+  <form class="panel" id="regForm" novalidate>
+
+    <!-- STEP 1: PAYMENT VERIFICATION -->
+    <section class="step" data-step="1">
+      <div class="step-eyebrow">Section 01</div>
+      <h2>Entry Fee &amp; Payment Verification</h2>
+      <p class="step-intro">A one-time entry fee of <strong>PKR 100</strong> is required to confirm your seat in the 30-Day Leadership Development Series. Please pay via Easypaisa to the account below, then upload your payment screenshot so we can verify it.</p>
+
+      <div class="payment-box">
+        <div class="payment-row"><span class="pk">Pay via</span><span class="pv">Easypaisa</span></div>
+        <div class="payment-row"><span class="pk">Account Title</span><span class="pv">Muhammad Ashfaq Ahmed</span></div>
+        <div class="payment-row"><span class="pk">Account Number</span><span class="pv">0324&#8209;7774957</span></div>
+        <div class="payment-row"><span class="pk">Amount</span><span class="pv">PKR 100</span></div>
+      </div>
+      <div class="payment-note">After sending the payment, fill the fields below exactly as they appear on your Easypaisa transaction, and upload a clear screenshot of the successful payment. Your registration will only be confirmed after verification.</div>
+
+      <div class="field">
+        <label for="senderName">Sender's Name (as shown on your Easypaisa account)<span class="req">*</span></label>
+        <input type="text" id="senderName" name="senderName" required placeholder="Name on the Easypaisa account you paid from">
+        <div class="field-error">Please enter the sender's name.</div>
+      </div>
+
+      <div class="field">
+        <label for="txnId">Transaction ID <span style="font-weight:400;color:var(--ink-soft);">(optional)</span></label>
+        <input type="text" id="txnId" name="txnId" placeholder="e.g. TRX123456789">
+      </div>
+
+      <div class="field">
+        <label for="paymentScreenshot">Upload Payment Screenshot<span class="req">*</span></label>
+        <div class="hint">JPG or PNG, showing the successful PKR 100 transaction to 0324‑7774957.</div>
+        <input type="file" id="paymentScreenshot" name="paymentScreenshot" accept="image/*">
+        <div class="field-error">Please upload a screenshot of your payment.</div>
+        <div class="upload-progress" id="uploadProgress">Processing screenshot…</div>
+        <div class="screenshot-preview" id="screenshotPreview">
+          <img id="screenshotPreviewImg" alt="Payment screenshot preview">
+          <div class="sp-info">Screenshot attached<small id="screenshotFileName"></small></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 2 -->
+    <section class="step" data-step="2">
+      <div class="step-eyebrow">Section 02</div>
+      <h2>Your Information</h2>
+      <p class="step-intro">Let's start with the basics — this is how we'll reach you about the series.</p>
+
+      <div class="field">
+        <label for="fullName">Full Name<span class="req">*</span></label>
+        <input type="text" id="fullName" name="fullName" required placeholder="e.g. Ayesha Khan">
+        <div class="field-error">Please enter your full name.</div>
+      </div>
+
+      <div class="field">
+        <label>Gender</label>
+        <div class="choice-grid" data-group="gender">
+          <label class="choice"><input type="radio" name="gender" value="Female"> Female</label>
+          <label class="choice"><input type="radio" name="gender" value="Male"> Male</label>
+          <label class="choice"><input type="radio" name="gender" value="Other"> Other</label>
+        </div>
+        <div class="other-inline" data-other-for="gender"><input type="text" placeholder="Please specify" name="genderOther"></div>
+      </div>
+
+      <div class="field">
+        <label for="age">Age</label>
+        <input type="number" id="age" name="age" min="10" max="100" placeholder="e.g. 22">
+      </div>
+
+      <div class="field">
+        <label for="city">City<span class="req">*</span></label>
+        <input type="text" id="city" name="city" required placeholder="e.g. Lahore">
+        <div class="field-error">Please enter your city.</div>
+      </div>
+
+      <div class="field">
+        <label for="phone">Phone / WhatsApp Number<span class="req">*</span></label>
+        <input type="tel" id="phone" name="phone" required placeholder="e.g. 03XXXXXXXXX">
+        <div class="field-error">Please enter a valid phone / WhatsApp number.</div>
+      </div>
+
+      <div class="field">
+        <label for="email">Email Address<span class="req">*</span></label>
+        <input type="email" id="email" name="email" required placeholder="you@example.com">
+        <div class="field-error">Please enter a valid email address.</div>
+      </div>
+
+      <div class="field">
+        <label>Educational / Professional Status</label>
+        <div class="choice-grid" data-group="status">
+          <label class="choice"><input type="radio" name="status" value="Student"> Student</label>
+          <label class="choice"><input type="radio" name="status" value="Graduate"> Graduate</label>
+          <label class="choice"><input type="radio" name="status" value="Business Owner"> Business Owner</label>
+          <label class="choice"><input type="radio" name="status" value="Social Worker"> Social Worker</label>
+          <label class="choice"><input type="radio" name="status" value="Other"> Other</label>
+        </div>
+        <div class="other-inline" data-other-for="status"><input type="text" placeholder="Please specify" name="statusOther"></div>
+      </div>
+    </section>
+
+    <!-- STEP 3 -->
+    <section class="step" data-step="3">
+      <div class="step-eyebrow">Section 03</div>
+      <h2>Your Connection with NexGen</h2>
+      <p class="step-intro">Help us understand where you're starting from.</p>
+
+      <div class="field">
+        <label for="association">What is your current association with NexGen Women &amp; Youth Council?</label>
+        <select id="association" name="association">
+          <option value="">Select an option</option>
+          <option>New applicant — no prior connection</option>
+          <option>Existing member</option>
+          <option>Existing volunteer</option>
+          <option>Attended an event before</option>
+          <option>Other</option>
+        </select>
+        <div class="other-inline" data-other-for-select="association"><input type="text" placeholder="Please specify" name="associationOther"></div>
+      </div>
+
+      <div class="field">
+        <label for="designation">If you are already a member / volunteer, please mention your designation or department.</label>
+        <input type="text" id="designation" name="designation" placeholder="e.g. Media Team, Outreach Volunteer">
+      </div>
+
+      <div class="field">
+        <label for="heardFrom">How did you hear about the 30-Day Leadership Development Series?</label>
+        <select id="heardFrom" name="heardFrom">
+          <option value="">Select an option</option>
+          <option>Social media</option>
+          <option>Friend or family</option>
+          <option>A NexGen member</option>
+          <option>WhatsApp group</option>
+          <option>Event or campus visit</option>
+          <option>Other</option>
+        </select>
+        <div class="other-inline" data-other-for-select="heardFrom"><input type="text" placeholder="Please specify" name="heardFromOther"></div>
+      </div>
+    </section>
+
+    <!-- STEP 4 -->
+    <section class="step" data-step="4">
+      <div class="step-eyebrow">Section 04</div>
+      <h2>Why Do You Want to Join?</h2>
+      <p class="step-intro">There's no perfect answer here — we just want to understand your motivation.</p>
+
+      <div class="field">
+        <label for="whyJoin">Why do you want to join the 30-Day Leadership Development Series?</label>
+        <textarea id="whyJoin" name="whyJoin" placeholder="Share what's drawing you to this series..."></textarea>
+      </div>
+
+      <div class="field">
+        <label for="wantLearn">What do you want to learn or improve through this series?</label>
+        <textarea id="wantLearn" name="wantLearn" placeholder="Skills, mindset, confidence, network..."></textarea>
+      </div>
+
+      <div class="field">
+        <label for="mainGoal">What is your main goal after completing this series?</label>
+        <textarea id="mainGoal" name="mainGoal" placeholder="What would success look like for you?"></textarea>
+      </div>
+    </section>
+
+    <!-- STEP 5 -->
+    <section class="step" data-step="5">
+      <div class="step-eyebrow">Section 05</div>
+      <h2>Your Skills &amp; Interests</h2>
+      <p class="step-intro">Select everything that applies — this helps us group participants well.</p>
+
+      <div class="field">
+        <label>What skills do you currently have?</label>
+        <div class="choice-grid" data-group="skills" data-multi="true">
+          <label class="choice"><input type="checkbox" name="skills" value="Communication"> Communication</label>
+          <label class="choice"><input type="checkbox" name="skills" value="Leadership"> Leadership</label>
+          <label class="choice"><input type="checkbox" name="skills" value="Public Speaking"> Public Speaking</label>
+          <label class="choice"><input type="checkbox" name="skills" value="Writing"> Writing</label>
+          <label class="choice"><input type="checkbox" name="skills" value="Social Media"> Social Media</label>
+          <label class="choice"><input type="checkbox" name="skills" value="Teamwork"> Teamwork</label>
+          <label class="choice"><input type="checkbox" name="skills" value="Other"> Other</label>
+        </div>
+        <div class="other-inline" data-other-for="skills"><input type="text" placeholder="Please specify" name="skillsOther"></div>
+      </div>
+
+      <div class="field">
+        <label>Which areas are you interested in working in?</label>
+        <div class="choice-grid" data-group="interestAreas" data-multi="true">
+          <label class="choice"><input type="checkbox" name="interestAreas" value="Women Empowerment"> Women Empowerment</label>
+          <label class="choice"><input type="checkbox" name="interestAreas" value="Youth Development"> Youth Development</label>
+          <label class="choice"><input type="checkbox" name="interestAreas" value="Education"> Education</label>
+          <label class="choice"><input type="checkbox" name="interestAreas" value="Social Work"> Social Work</label>
+          <label class="choice"><input type="checkbox" name="interestAreas" value="Media & Communication"> Media &amp; Communication</label>
+          <label class="choice"><input type="checkbox" name="interestAreas" value="Event Management"> Event Management</label>
+          <label class="choice"><input type="checkbox" name="interestAreas" value="Other"> Other</label>
+        </div>
+        <div class="other-inline" data-other-for="interestAreas"><input type="text" placeholder="Please specify" name="interestAreasOther"></div>
+      </div>
+    </section>
+
+    <!-- STEP 6 -->
+    <section class="step" data-step="6">
+      <div class="step-eyebrow">Section 06</div>
+      <h2>Participation</h2>
+      <p class="step-intro">The series works best with honest expectations on both sides.</p>
+
+      <div class="field">
+        <label>Are you willing to actively participate in the 30-Day Series?</label>
+        <div class="choice-grid" data-group="willingActive">
+          <label class="choice"><input type="radio" name="willingActive" value="Yes"> Yes</label>
+          <label class="choice"><input type="radio" name="willingActive" value="No"> No</label>
+          <label class="choice"><input type="radio" name="willingActive" value="Maybe"> Maybe</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>How much time can you reasonably give to the series?</label>
+        <select name="timeAvailable">
+          <option value="">Select an option</option>
+          <option>Less than 1 hour / day</option>
+          <option>1–2 hours / day</option>
+          <option>2–3 hours / day</option>
+          <option>Weekends only</option>
+          <option>Flexible / varies</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>Are you willing to participate in activities, assignments, discussions and team tasks during the series?</label>
+        <div class="choice-grid" data-group="willingTasks">
+          <label class="choice"><input type="radio" name="willingTasks" value="Yes"> Yes</label>
+          <label class="choice"><input type="radio" name="willingTasks" value="No"> No</label>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 7 -->
+    <section class="step" data-step="7">
+      <div class="step-eyebrow">Section 07</div>
+      <h2>Future Volunteer Opportunity</h2>
+      <p class="step-intro">Completing the series doesn't guarantee a volunteer role — but if you're interested, tell us more.</p>
+
+      <div class="field">
+        <label>Which opportunity are you primarily interested in?</label>
+        <select name="opportunity">
+          <option value="">Select an option</option>
+          <option>Event Management</option>
+          <option>Content / Social Media</option>
+          <option>Outreach &amp; Community</option>
+          <option>Education Programs</option>
+          <option>Administration</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>After completing the 30-Day Leadership Development Series, would you be interested in joining the NexGen Volunteer Department if you are eligible and selected?</label>
+        <div class="choice-grid" data-group="joinVolunteer">
+          <label class="choice"><input type="radio" name="joinVolunteer" value="Yes"> Yes</label>
+          <label class="choice"><input type="radio" name="joinVolunteer" value="No"> No</label>
+          <label class="choice"><input type="radio" name="joinVolunteer" value="Maybe"> Maybe</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>If you join the Volunteer Department, which area would you prefer?</label>
+        <select name="preferredArea">
+          <option value="">Select an option</option>
+          <option>Event Management</option>
+          <option>Content / Social Media</option>
+          <option>Outreach &amp; Community</option>
+          <option>Education Programs</option>
+          <option>Administration</option>
+          <option>Not applicable</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>Why would you like to become a NexGen Volunteer?</label>
+        <textarea name="whyVolunteer" placeholder="Optional — share your thinking"></textarea>
+      </div>
+
+      <div class="field">
+        <label>Are you willing to contribute your time and skills to council activities as a volunteer?</label>
+        <div class="choice-grid" data-group="willingContribute">
+          <label class="choice"><input type="radio" name="willingContribute" value="Yes"> Yes</label>
+          <label class="choice"><input type="radio" name="willingContribute" value="No"> No</label>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 8 -->
+    <section class="step" data-step="8">
+      <div class="step-eyebrow">Section 08</div>
+      <h2>Final Information</h2>
+      <p class="step-intro">Almost there — a couple of closing thoughts.</p>
+
+      <div class="field">
+        <label>What are your expectations from the NexGen 30-Day Leadership Development Series?</label>
+        <textarea name="expectations"></textarea>
+      </div>
+
+      <div class="field">
+        <label>Is there anything you would like the NexGen team to know?</label>
+        <textarea name="anythingElse" placeholder="Optional"></textarea>
+      </div>
+    </section>
+
+    <!-- STEP 9: REVIEW -->
+    <section class="step" data-step="9">
+      <div class="step-eyebrow">Final Step</div>
+      <h2>Review &amp; Confirm</h2>
+      <p class="step-intro">Please check your answers before submitting.</p>
+      <div id="reviewArea"></div>
+
+      <div class="consent-box">
+        <label>
+          <input type="checkbox" id="consentCheck" required>
+          <span>I confirm that the information provided by me is correct and I agree to participate in the NexGen Women &amp; Youth Council 30-Day Leadership Development Series. I understand that participation in the series does not automatically guarantee selection as a volunteer; future volunteer opportunities may be based on participation, eligibility, interest and organizational requirements.</span>
+        </label>
+      </div>
+
+      <div class="submit-error" id="submitError"></div>
+    </section>
+
+    <!-- DONE -->
+    <section class="step" data-step="10">
+      <div class="done-screen">
+        <div class="done-badge">✓</div>
+        <h2>You're registered!</h2>
+        <p>Thank you for applying to the 30-Day Leadership Development Series. Our team will review your application and reach out on the phone / WhatsApp number or email you provided.</p>
+        <p><strong>You will be added to the group very soon, and one of our team members will contact you shortly.</strong></p>
+        <div class="ref-code">Reference: <span id="refCode"></span></div>
+        <div><button type="button" class="btn btn-ghost" id="startOverBtn">Submit another response</button></div>
+      </div>
+    </section>
+
+    <div class="step-actions" id="stepActions">
+      <button type="button" class="btn btn-ghost" id="backBtn">← Back</button>
+      <span class="step-count" id="stepCount">Step 1 of 9</span>
+      <button type="button" class="btn btn-primary" id="nextBtn">Continue →</button>
+    </div>
+  </form>
+
+  <footer>
+    NexGen Women Empowerment &amp; Youth Leadership Council · Your responses stay in this browser session
+    <div class="footer-tags">#NexGen #WomenEmpowerment #YouthLeadership #SkillDevelopment #ShapeTodayLeadTomorrow</div>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+(function(){
+  const sectionTitles = [
+    "Entry Fee & Payment","Your Information","Your Connection with NexGen","Why Do You Want to Join?",
+    "Your Skills & Interests","Participation","Future Volunteer Opportunity",
+    "Final Information","Review & Confirm"
+  ];
+  const totalSteps = 9; // 9 form steps, step 10 is the done screen
+  let current = 1;
+  let paymentScreenshotData = ''; // base64 data URL of the uploaded payment screenshot
+
+  const form = document.getElementById('regForm');
+  const nextBtn = document.getElementById('nextBtn');
+  const backBtn = document.getElementById('backBtn');
+  const stepCount = document.getElementById('stepCount');
+  const stepNowLabel = document.getElementById('stepNowLabel');
+  const pathTrack = document.getElementById('pathTrack');
+  const stepActions = document.getElementById('stepActions');
+  const submitErrorEl = document.getElementById('submitError');
+
+  // Build sidebar
+  sectionTitles.forEach((title, i) => {
+    const el = document.createElement('div');
+    el.className = 'path-item';
+    el.dataset.step = i + 1;
+    el.innerHTML = `<span class="path-dot">${i+1}</span><span class="path-label">${title}</span>`;
+    el.addEventListener('click', () => { if (i+1 < current || i+1 === current) goTo(i+1); else if (validateStep(current)) goTo(i+1); });
+    pathTrack.appendChild(el);
+  });
+
+  function renderPath(){
+    document.querySelectorAll('.path-item').forEach(item => {
+      const s = parseInt(item.dataset.step, 10);
+      item.classList.toggle('active', s === current);
+      item.classList.toggle('done', s < current);
+    });
+  }
+
+  function goTo(step){
+    document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+    document.querySelector(`.step[data-step="${step}"]`).classList.add('active');
+    current = step;
+    stepCount.textContent = step <= totalSteps ? `Step ${step} of ${totalSteps}` : '';
+    stepNowLabel.textContent = Math.min(step, totalSteps);
+    backBtn.style.visibility = step === 1 ? 'hidden' : 'visible';
+    stepActions.style.display = step === 10 ? 'none' : 'flex';
+    if (step === totalSteps) { buildReview(); nextBtn.textContent = 'Submit Registration →'; }
+    else if (step < totalSteps) { nextBtn.textContent = 'Continue →'; }
+    renderPath();
+    window.scrollTo({top: form.offsetTop - 20, behavior:'smooth'});
+  }
+
+  // Choice pill toggling + "Other" reveal
+  document.querySelectorAll('.choice').forEach(choice => {
+    const input = choice.querySelector('input');
+    choice.addEventListener('click', (e) => {
+      if (e.target !== input) input.checked = input.type === 'checkbox' ? !input.checked : true;
+      const group = choice.closest('[data-group]');
+      const name = group.dataset.group;
+      if (input.type === 'radio') {
+        group.querySelectorAll('.choice').forEach(c => c.classList.remove('selected'));
+        choice.classList.add('selected');
+      } else {
+        choice.classList.toggle('selected', input.checked);
+      }
+      const otherBox = document.querySelector(`.other-inline[data-other-for="${name}"]`);
+      if (otherBox) {
+        const otherChecked = [...group.querySelectorAll('input[value="Other"]')].some(i => i.checked);
+        otherBox.classList.toggle('show', otherChecked);
+      }
+    });
+  });
+
+  // Select "Other" reveal
+  document.querySelectorAll('select').forEach(sel => {
+    sel.addEventListener('change', () => {
+      const box = document.querySelector(`.other-inline[data-other-for-select="${sel.name}"]`);
+      if (box) box.classList.toggle('show', sel.value === 'Other');
+    });
+  });
+
+  // Payment screenshot upload: compress client-side then store as base64 data URL
+  const screenshotInput = document.getElementById('paymentScreenshot');
+  const screenshotPreview = document.getElementById('screenshotPreview');
+  const screenshotPreviewImg = document.getElementById('screenshotPreviewImg');
+  const screenshotFileName = document.getElementById('screenshotFileName');
+  const uploadProgress = document.getElementById('uploadProgress');
+
+  screenshotInput.addEventListener('change', () => {
+    const file = screenshotInput.files && screenshotInput.files[0];
+    screenshotInput.closest('.field').classList.remove('invalid');
+    if (!file) { paymentScreenshotData = ''; screenshotPreview.classList.remove('show'); return; }
+
+    uploadProgress.classList.add('show');
+    screenshotPreview.classList.remove('show');
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const img = new Image();
+      img.onload = () => {
+        // Resize/compress so the base64 stays a reasonable size for storage
+        const maxDim = 1000;
+        let { width, height } = img;
+        if (width > maxDim || height > maxDim) {
+          const scale = maxDim / Math.max(width, height);
+          width = Math.round(width * scale);
+          height = Math.round(height * scale);
+        }
+        const canvas = document.createElement('canvas');
+        canvas.width = width; canvas.height = height;
+        canvas.getContext('2d').drawImage(img, 0, 0, width, height);
+        paymentScreenshotData = canvas.toDataURL('image/jpeg', 0.72);
+
+        screenshotPreviewImg.src = paymentScreenshotData;
+        screenshotFileName.textContent = file.name;
+        screenshotPreview.classList.add('show');
+        uploadProgress.classList.remove('show');
+      };
+      img.onerror = () => { uploadProgress.classList.remove('show'); };
+      img.src = e.target.result;
+    };
+    reader.onerror = () => { uploadProgress.classList.remove('show'); };
+    reader.readAsDataURL(file);
+  });
+
+  function validateStep(step){
+    let valid = true;
+    const section = document.querySelector(`.step[data-step="${step}"]`);
+    if (!section) return true;
+    section.querySelectorAll('.field').forEach(f => f.classList.remove('invalid'));
+
+    if (step === 1) {
+      const sender = document.getElementById('senderName');
+      if (!sender.value.trim()) { sender.closest('.field').classList.add('invalid'); valid = false; }
+      if (!paymentScreenshotData) { screenshotInput.closest('.field').classList.add('invalid'); valid = false; }
+    }
+    if (step === 2) {
+      const requiredIds = ['fullName','city','phone','email'];
+      requiredIds.forEach(id => {
+        const el = document.getElementById(id);
+        let ok = el.value.trim().length > 0;
+        if (id === 'email' && ok) ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value.trim());
+        if (id === 'phone' && ok) ok = el.value.trim().replace(/[^0-9]/g,'').length >= 7;
+        if (!ok) { el.closest('.field').classList.add('invalid'); valid = false; }
+      });
+    }
+    if (step === totalSteps) {
+      const consent = document.getElementById('consentCheck');
+      if (!consent.checked) {
+        consent.closest('.consent-box').style.borderColor = 'var(--error)';
+        valid = false;
+      } else {
+        consent.closest('.consent-box').style.borderColor = '';
+      }
+    }
+    return valid;
+  }
+
+  nextBtn.addEventListener('click', () => {
+    if (!validateStep(current)) return;
+    if (current < totalSteps) goTo(current + 1);
+    else submitForm();
+  });
+  backBtn.addEventListener('click', () => { if (current > 1) goTo(current - 1); });
+
+  function val(name){
+    const els = form.elements[name];
+    if (!els) return '';
+    if (els instanceof RadioNodeList) {
+      const arr = [...els];
+      const checked = arr.filter(e => (e.type === 'radio' && e.checked) || (e.type === 'checkbox' && e.checked));
+      if (arr[0] && arr[0].type === 'checkbox') return checked.map(c => c.value).join(', ');
+      return checked.length ? checked[0].value : '';
+    }
+    return els.value || '';
+  }
+  function withOther(base, otherName){
+    let v = val(base);
+    if (v && v.includes('Other')) {
+      const other = val(otherName);
+      if (other) v = v.replace('Other', `Other — ${other}`);
+    }
+    return v;
+  }
+
+  function row(label, value){
+    const v = value && value.trim() ? value.trim() : '';
+    return `<div class="review-row"><div class="rk">${label}</div><div class="rv ${v ? '' : 'empty'}">${v || 'Not answered'}</div></div>`;
+  }
+
+  function buildReview(){
+    const g1 = val('genderOther') && val('gender')==='Other' ? `Other — ${val('genderOther')}` : val('gender');
+    const s1 = val('statusOther') && val('status')==='Other' ? `Other — ${val('statusOther')}` : val('status');
+    const assoc = form.elements['association'].value === 'Other' ? `Other — ${val('associationOther')}` : form.elements['association'].value;
+    const heard = form.elements['heardFrom'].value === 'Other' ? `Other — ${val('heardFromOther')}` : form.elements['heardFrom'].value;
+    const skills = withOther('skills','skillsOther');
+    const interests = withOther('interestAreas','interestAreasOther');
+
+    const screenshotRow = `<div class="review-row"><div class="rk">Payment Screenshot</div><div class="rv ${paymentScreenshotData ? '' : 'empty'}">${paymentScreenshotData ? '<img src="'+paymentScreenshotData+'" alt="Payment screenshot" style="width:64px;height:64px;object-fit:cover;border-radius:8px;border:1.5px solid var(--line);vertical-align:middle;"> Attached' : 'Not uploaded'}</div></div>`;
+
+    const html = `
+      <div class="review-group"><h4>Entry Fee &amp; Payment Verification</h4>
+        ${row("Sender's Name", val('senderName'))}
+        ${row('Transaction ID', val('txnId'))}
+        ${screenshotRow}
+      </div>
+      <div class="review-group"><h4>Your Information</h4>
+        ${row('Full Name', val('fullName'))}
+        ${row('Gender', g1)}
+        ${row('Age', val('age'))}
+        ${row('City', val('city'))}
+        ${row('Phone / WhatsApp', val('phone'))}
+        ${row('Email', val('email'))}
+        ${row('Educational / Professional Status', s1)}
+      </div>
+      <div class="review-group"><h4>Connection with NexGen</h4>
+        ${row('Current association', assoc)}
+        ${row('Designation / department', val('designation'))}
+        ${row('How did you hear about the series', heard)}
+      </div>
+      <div class="review-group"><h4>Why Do You Want to Join?</h4>
+        ${row('Why join the series', val('whyJoin'))}
+        ${row('What to learn / improve', val('wantLearn'))}
+        ${row('Main goal after completing', val('mainGoal'))}
+      </div>
+      <div class="review-group"><h4>Skills &amp; Interests</h4>
+        ${row('Current skills', skills)}
+        ${row('Interested areas', interests)}
+      </div>
+      <div class="review-group"><h4>Participation</h4>
+        ${row('Willing to actively participate', val('willingActive'))}
+        ${row('Time available', val('timeAvailable'))}
+        ${row('Willing to do activities / tasks', val('willingTasks'))}
+      </div>
+      <div class="review-group"><h4>Future Volunteer Opportunity</h4>
+        ${row('Opportunity of interest', val('opportunity'))}
+        ${row('Interested in joining Volunteer Dept', val('joinVolunteer'))}
+        ${row('Preferred area', val('preferredArea'))}
+        ${row('Why become a volunteer', val('whyVolunteer'))}
+        ${row('Willing to contribute time & skills', val('willingContribute'))}
+      </div>
+      <div class="review-group"><h4>Final Information</h4>
+        ${row('Expectations from the series', val('expectations'))}
+        ${row('Anything else to share', val('anythingElse'))}
+      </div>
+    `;
+    document.getElementById('reviewArea').innerHTML = html;
+  }
+
+  // ====== SUPABASE CONNECTION ======
+  // 1. Create a free project at https://supabase.com
+  // 2. Run the SQL setup script (provided separately) in the Supabase SQL Editor
+  // 3. Paste your Project URL and anon/public API key below (Project Settings → API)
+  //    The anon key is SAFE to put in frontend code — it can only INSERT, never read/edit/delete,
+  //    because of the Row Level Security policies created by the SQL script.
+  const SUPABASE_URL = "PASTE_YOUR_SUPABASE_PROJECT_URL_HERE";
+  const SUPABASE_ANON_KEY = "PASTE_YOUR_SUPABASE_ANON_PUBLIC_KEY_HERE";
+
+  const supabaseClient = (SUPABASE_URL.startsWith('PASTE_') || SUPABASE_ANON_KEY.startsWith('PASTE_'))
+    ? null
+    : window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  function dataUrlToBlob(dataUrl){
+    const [meta, b64] = dataUrl.split(',');
+    const mime = meta.match(/:(.*?);/)[1];
+    const bin = atob(b64);
+    const bytes = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+    return new Blob([bytes], { type: mime });
+  }
+
+  let isSubmitting = false;
+
+  async function submitForm(){
+    if (isSubmitting) return; // prevent double-click / duplicate submissions
+    isSubmitting = true;
+    submitErrorEl.classList.remove('show');
+    submitErrorEl.textContent = '';
+    nextBtn.disabled = true;
+    const originalBtnText = nextBtn.textContent;
+    nextBtn.textContent = 'Submitting…';
+
+    const ref = 'NG-' + Date.now().toString(36).toUpperCase();
+
+    try {
+      if (!supabaseClient) {
+        throw new Error('Backend not configured yet. Please add your Supabase URL and anon key in the code (SUPABASE_URL / SUPABASE_ANON_KEY).');
+      }
+
+      const data = Object.fromEntries(new FormData(form).entries());
+      data.skills = [...form.querySelectorAll('input[name="skills"]:checked')].map(i=>i.value).join(', ');
+      data.interestAreas = [...form.querySelectorAll('input[name="interestAreas"]:checked')].map(i=>i.value).join(', ');
+      delete data.paymentScreenshot; // raw file input value isn't useful, we upload the compressed image separately
+
+      // 1. Upload the payment screenshot to Supabase Storage (private bucket)
+      let screenshotPath = null;
+      if (paymentScreenshotData) {
+        const blob = dataUrlToBlob(paymentScreenshotData);
+        screenshotPath = `screenshots/${ref}-${Date.now()}.jpg`;
+        const { error: uploadError } = await supabaseClient
+          .storage
+          .from('payment-screenshots')
+          .upload(screenshotPath, blob, { contentType: 'image/jpeg', upsert: false });
+        if (uploadError) throw uploadError;
+      }
+
+      // 2. Insert the application row
+      const row = {
+        reference_code: ref,
+        sender_name: data.senderName || null,
+        txn_id: data.txnId || null,
+        full_name: data.fullName || null,
+        gender: data.gender || null,
+        gender_other: data.genderOther || null,
+        age: data.age || null,
+        city: data.city || null,
+        phone: data.phone || null,
+        email: data.email || null,
+        applicant_status: data.status || null,
+        applicant_status_other: data.statusOther || null,
+        association: data.association || null,
+        association_other: data.associationOther || null,
+        designation: data.designation || null,
+        heard_from: data.heardFrom || null,
+        heard_from_other: data.heardFromOther || null,
+        main_goal: data.mainGoal || null,
+        why_join: data.whyJoin || null,
+        want_learn: data.wantLearn || null,
+        skills: data.skills || null,
+        skills_other: data.skillsOther || null,
+        interest_areas: data.interestAreas || null,
+        interest_areas_other: data.interestAreasOther || null,
+        time_available: data.timeAvailable || null,
+        willing_active: data.willingActive || null,
+        willing_tasks: data.willingTasks || null,
+        opportunity: data.opportunity || null,
+        preferred_area: data.preferredArea || null,
+        join_volunteer: data.joinVolunteer || null,
+        why_volunteer: data.whyVolunteer || null,
+        willing_contribute: data.willingContribute || null,
+        expectations: data.expectations || null,
+        anything_else: data.anythingElse || null,
+        screenshot_path: screenshotPath
+      };
+
+      const { error: insertError } = await supabaseClient.from('applications').insert(row);
+      if (insertError) throw insertError;
+
+      document.getElementById('refCode').textContent = ref;
+      goTo(10);
+    } catch (err) {
+      console.error('Submission failed:', err);
+      submitErrorEl.textContent = 'Sorry, your registration could not be saved. Please check your internet connection and try again. If this keeps happening, please contact us directly with your details.';
+      submitErrorEl.classList.add('show');
+      submitErrorEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } finally {
+      isSubmitting = false;
+      nextBtn.disabled = false;
+      nextBtn.textContent = originalBtnText;
+    }
+  }
+
+  document.getElementById('startOverBtn').addEventListener('click', () => {
+    form.reset();
+    document.querySelectorAll('.choice.selected').forEach(c => c.classList.remove('selected'));
+    document.querySelectorAll('.other-inline.show').forEach(o => o.classList.remove('show'));
+    paymentScreenshotData = '';
+    screenshotPreview.classList.remove('show');
+    goTo(1);
+  });
+
+  goTo(1);
+})();
+</script>
+</body>
+</html>
