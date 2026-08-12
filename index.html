@@ -89,32 +89,13 @@
   }
 
   .series-banner{
-    margin:18px auto 0;
-    width:min(760px, 100%);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:34px;
-    background:#fff;
-    border:1px solid var(--line);
-    border-radius:18px;
-    box-shadow:var(--shadow);
-    padding:20px 34px;
-    text-align:center;
+    grid-column:1/-1;
+    margin:18px 0 0;
   }
-  .series-banner img{width:116px; height:116px; object-fit:contain; flex:none;}
-  .series-banner strong{
-    color:var(--navy);
-    font-family:'Fraunces', serif;
-    font-size:34px;
-    line-height:1.35;
-    letter-spacing:-.02em;
-    max-width:520px;
-  }
-  @media (max-width:640px){
-    .series-banner{flex-direction:column; gap:12px; padding:18px;}
-    .series-banner img{width:92px; height:92px;}
-    .series-banner strong{font-size:25px;}
+  .series-banner img{
+    display:block;
+    width:100%;
+    height:auto;
   }
 
   @media (max-width:640px){ .masthead{flex-direction:column; align-items:flex-start;} .masthead-sub{text-align:left;} }
@@ -377,8 +358,7 @@
   </div>
 
   <div class="series-banner" aria-label="NexGen Women Empowerment and Youth Leadership Council banner">
-    <img src="logo.png" alt="NexGen Women and Youth Council logo">
-    <strong>NextGen Women Empowerment and Youth Leadership Council.</strong>
+    <img src="banner.png" alt="NexGen Women Empowerment and Youth Leadership Council banner">
   </div>
 
   <div class="hero">
