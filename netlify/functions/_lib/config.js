@@ -121,7 +121,8 @@ function requireAdmin(event) {
 }
 function cookieHeader(token, maxAge) {
   const secure = process.env.NETLIFY_DEV ? '' : ' Secure;';
-  return `ng_admin_session=${encodeURIComponent(token)}; Path=/; HttpOnly;${secure} SameSite=Lax; Max-Age=${maxAge}`;
+  const maxAgePart = Number.isFinite(maxAge) ? ` Max-Age=${maxAge};` : '';
+  return `ng_admin_session=${encodeURIComponent(token)}; Path=/; HttpOnly;${secure} SameSite=Lax;${maxAgePart}`;
 }
 
 module.exports = { APPLICATION_STATUSES, BUCKET, cookieHeader, getSupabase, json, requireAdmin, safeString, sanitizeApplication, sign, validateApplication };
