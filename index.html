@@ -87,6 +87,36 @@
   .masthead-sub{
     font-size:14px; color:var(--ink-soft); max-width:340px; text-align:right; line-height:1.5;
   }
+
+  .series-banner{
+    margin:18px auto 0;
+    width:min(760px, 100%);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:34px;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:18px;
+    box-shadow:var(--shadow);
+    padding:20px 34px;
+    text-align:center;
+  }
+  .series-banner img{width:116px; height:116px; object-fit:contain; flex:none;}
+  .series-banner strong{
+    color:var(--navy);
+    font-family:'Fraunces', serif;
+    font-size:34px;
+    line-height:1.35;
+    letter-spacing:-.02em;
+    max-width:520px;
+  }
+  @media (max-width:640px){
+    .series-banner{flex-direction:column; gap:12px; padding:18px;}
+    .series-banner img{width:92px; height:92px;}
+    .series-banner strong{font-size:25px;}
+  }
+
   @media (max-width:640px){ .masthead{flex-direction:column; align-items:flex-start;} .masthead-sub{text-align:left;} }
 
   /* ---------- Hero ---------- */
@@ -340,6 +370,10 @@
       <div class="brand-text">
         <div class="eyebrow">NexGen Women Empowerment &amp; Youth Leadership Council</div>
         <h1>30-Day Leadership Development Series</h1>
+        <div class="series-banner" aria-label="NexGen Women Empowerment and Youth Leadership Council banner">
+          <img src="logo.png" alt="NexGen Women and Youth Council logo">
+          <strong>NextGen Women Empowerment and Youth Leadership Council.</strong>
+        </div>
       </div>
     </div>
     <div class="masthead-sub">Shaping Today. Learn Always. Lead Tomorrow.</div>
