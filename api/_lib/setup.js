@@ -7,6 +7,28 @@ function postgresUrl() {
   return process.env.POSTGRES_URL_NON_POOLING || process.env.POSTGRES_URL || process.env.DATABASE_URL || '';
 }
 
+function postgresConnectionConfig() {
+  const connectionString = postgresUrl();
+  if (!connectionString) return null;
+
+  let normalizedConnectionString = connectionString;
+  try {
+    const url = new URL(connectionString);
+    for (const key of ['ssl', 'sslmode', 'sslcert', 'sslkey', 'sslrootcert']) {
+      url.searchParams.delete(key);
+    }
+    normalizedConnectionString = url.toString();
+  } catch {
+    // Keep the original value if it is not a URL. The pg client will report
+    // the actionable connection-string error when it tries to connect.
+  }
+
+  return {
+    connectionString: normalizedConnectionString,
+    ssl: { rejectUnauthorized: false }
+  };
+}
+
 async function ensureStorageBucket(supabase) {
   const { error: getError } = await supabase.storage.getBucket(BUCKET);
   if (!getError) return;
@@ -23,15 +45,12 @@ async function ensureStorageBucket(supabase) {
 }
 
 async function ensureDatabaseTables() {
-  const connectionString = postgresUrl();
-  if (!connectionString) {
+  const config = postgresConnectionConfig();
+  if (!config) {
     throw new Error('Missing POSTGRES_URL_NON_POOLING / POSTGRES_URL for automatic database setup.');
   }
 
-  const client = new Client({
-    connectionString,
-    ssl: { rejectUnauthorized: false }
-  });
+  const client = new Client(config);
 
   await client.connect();
   try {
@@ -133,15 +152,12 @@ async function ensureApplicationStorageAndDatabase(supabase) {
 
 async function insertApplicationWithPostgres(row) {
   await ensureDatabaseTables();
-  const connectionString = postgresUrl();
-  if (!connectionString) {
+  const config = postgresConnectionConfig();
+  if (!config) {
     throw new Error('Missing POSTGRES_URL_NON_POOLING / POSTGRES_URL for database insert fallback.');
   }
 
-  const client = new Client({
-    connectionString,
-    ssl: { rejectUnauthorized: false }
-  });
+  const client = new Client(config);
 
   const columns = [
     'reference_code', 'status', 'sender_name', 'txn_id', 'full_name', 'gender', 'gender_other', 'age', 'city', 'phone', 'email',

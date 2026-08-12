@@ -15,5 +15,5 @@ exports.handler = async (event) => {
   }
   attempts.delete(ip);
   const token = sign({ sub: 'admin', exp: Date.now() + 8 * 60 * 60 * 1000 });
-  return json(200, { ok: true }, { 'Set-Cookie': cookieHeader(token, 8 * 60 * 60) });
+  return json(200, { ok: true }, { 'Set-Cookie': cookieHeader(token) });
 };
