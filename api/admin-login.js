@@ -16,5 +16,5 @@ module.exports = async function handler(req, res) {
   }
   attempts.delete(ip);
   const token = sign({ sub: 'admin', exp: Date.now() + 8 * 60 * 60 * 1000 });
-  return send(res, 200, { ok: true }, { 'Set-Cookie': cookieHeader(token, 8 * 60 * 60) });
+  return send(res, 200, { ok: true }, { 'Set-Cookie': cookieHeader(token) });
 };
