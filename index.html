@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NexGen Women Empowerment &amp; Youth Leadership Council — 30-Day Leadership Development Series</title>
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="apple-touch-icon" href="logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -85,6 +87,36 @@
   .masthead-sub{
     font-size:14px; color:var(--ink-soft); max-width:340px; text-align:right; line-height:1.5;
   }
+
+  .series-banner{
+    margin:18px auto 0;
+    width:min(760px, 100%);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:34px;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:18px;
+    box-shadow:var(--shadow);
+    padding:20px 34px;
+    text-align:center;
+  }
+  .series-banner img{width:116px; height:116px; object-fit:contain; flex:none;}
+  .series-banner strong{
+    color:var(--navy);
+    font-family:'Fraunces', serif;
+    font-size:34px;
+    line-height:1.35;
+    letter-spacing:-.02em;
+    max-width:520px;
+  }
+  @media (max-width:640px){
+    .series-banner{flex-direction:column; gap:12px; padding:18px;}
+    .series-banner img{width:92px; height:92px;}
+    .series-banner strong{font-size:25px;}
+  }
+
   @media (max-width:640px){ .masthead{flex-direction:column; align-items:flex-start;} .masthead-sub{text-align:left;} }
 
   /* ---------- Hero ---------- */
@@ -338,9 +370,15 @@
       <div class="brand-text">
         <div class="eyebrow">NexGen Women Empowerment &amp; Youth Leadership Council</div>
         <h1>30-Day Leadership Development Series</h1>
+
       </div>
     </div>
     <div class="masthead-sub">Shaping Today. Learn Always. Lead Tomorrow.</div>
+  </div>
+
+  <div class="series-banner" aria-label="NexGen Women Empowerment and Youth Leadership Council banner">
+    <img src="logo.png" alt="NexGen Women and Youth Council logo">
+    <strong>NextGen Women Empowerment and Youth Leadership Council.</strong>
   </div>
 
   <div class="hero">
@@ -426,47 +464,9 @@
   <!-- Form -->
   <form class="panel" id="regForm" novalidate>
 
-    <!-- STEP 1: PAYMENT VERIFICATION -->
+    <!-- STEP 1 -->
     <section class="step" data-step="1">
       <div class="step-eyebrow">Section 01</div>
-      <h2>Entry Fee &amp; Payment Verification</h2>
-      <p class="step-intro">A one-time entry fee of <strong>PKR 100</strong> is required to confirm your seat in the 30-Day Leadership Development Series. Please pay via Easypaisa to the account below, then upload your payment screenshot so we can verify it.</p>
-
-      <div class="payment-box">
-        <div class="payment-row"><span class="pk">Pay via</span><span class="pv">Easypaisa</span></div>
-        <div class="payment-row"><span class="pk">Account Title</span><span class="pv">Muhammad Ashfaq Ahmed</span></div>
-        <div class="payment-row"><span class="pk">Account Number</span><span class="pv">0324&#8209;7774957</span></div>
-        <div class="payment-row"><span class="pk">Amount</span><span class="pv">PKR 100</span></div>
-      </div>
-      <div class="payment-note">After sending the payment, fill the fields below exactly as they appear on your Easypaisa transaction, and upload a clear screenshot of the successful payment. Your registration will only be confirmed after verification.</div>
-
-      <div class="field">
-        <label for="senderName">Sender's Name (as shown on your Easypaisa account)<span class="req">*</span></label>
-        <input type="text" id="senderName" name="senderName" required placeholder="Name on the Easypaisa account you paid from">
-        <div class="field-error">Please enter the sender's name.</div>
-      </div>
-
-      <div class="field">
-        <label for="txnId">Transaction ID <span style="font-weight:400;color:var(--ink-soft);">(optional)</span></label>
-        <input type="text" id="txnId" name="txnId" placeholder="e.g. TRX123456789">
-      </div>
-
-      <div class="field">
-        <label for="paymentScreenshot">Upload Payment Screenshot<span class="req">*</span></label>
-        <div class="hint">JPG or PNG, showing the successful PKR 100 transaction to 0324‑7774957.</div>
-        <input type="file" id="paymentScreenshot" name="paymentScreenshot" accept="image/*">
-        <div class="field-error">Please upload a screenshot of your payment.</div>
-        <div class="upload-progress" id="uploadProgress">Processing screenshot…</div>
-        <div class="screenshot-preview" id="screenshotPreview">
-          <img id="screenshotPreviewImg" alt="Payment screenshot preview">
-          <div class="sp-info">Screenshot attached<small id="screenshotFileName"></small></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- STEP 2 -->
-    <section class="step" data-step="2">
-      <div class="step-eyebrow">Section 02</div>
       <h2>Your Information</h2>
       <p class="step-intro">Let's start with the basics — this is how we'll reach you about the series.</p>
 
@@ -522,9 +522,9 @@
       </div>
     </section>
 
-    <!-- STEP 3 -->
-    <section class="step" data-step="3">
-      <div class="step-eyebrow">Section 03</div>
+    <!-- STEP 2 -->
+    <section class="step" data-step="2">
+      <div class="step-eyebrow">Section 02</div>
       <h2>Your Connection with NexGen</h2>
       <p class="step-intro">Help us understand where you're starting from.</p>
 
@@ -561,9 +561,9 @@
       </div>
     </section>
 
-    <!-- STEP 4 -->
-    <section class="step" data-step="4">
-      <div class="step-eyebrow">Section 04</div>
+    <!-- STEP 3 -->
+    <section class="step" data-step="3">
+      <div class="step-eyebrow">Section 03</div>
       <h2>Why Do You Want to Join?</h2>
       <p class="step-intro">There's no perfect answer here — we just want to understand your motivation.</p>
 
@@ -583,9 +583,9 @@
       </div>
     </section>
 
-    <!-- STEP 5 -->
-    <section class="step" data-step="5">
-      <div class="step-eyebrow">Section 05</div>
+    <!-- STEP 4 -->
+    <section class="step" data-step="4">
+      <div class="step-eyebrow">Section 04</div>
       <h2>Your Skills &amp; Interests</h2>
       <p class="step-intro">Select everything that applies — this helps us group participants well.</p>
 
@@ -618,9 +618,9 @@
       </div>
     </section>
 
-    <!-- STEP 6 -->
-    <section class="step" data-step="6">
-      <div class="step-eyebrow">Section 06</div>
+    <!-- STEP 5 -->
+    <section class="step" data-step="5">
+      <div class="step-eyebrow">Section 05</div>
       <h2>Participation</h2>
       <p class="step-intro">The series works best with honest expectations on both sides.</p>
 
@@ -654,9 +654,9 @@
       </div>
     </section>
 
-    <!-- STEP 7 -->
-    <section class="step" data-step="7">
-      <div class="step-eyebrow">Section 07</div>
+    <!-- STEP 6 -->
+    <section class="step" data-step="6">
+      <div class="step-eyebrow">Section 06</div>
       <h2>Future Volunteer Opportunity</h2>
       <p class="step-intro">Completing the series doesn't guarantee a volunteer role — but if you're interested, tell us more.</p>
 
@@ -709,9 +709,9 @@
       </div>
     </section>
 
-    <!-- STEP 8 -->
-    <section class="step" data-step="8">
-      <div class="step-eyebrow">Section 08</div>
+    <!-- STEP 7 -->
+    <section class="step" data-step="7">
+      <div class="step-eyebrow">Section 07</div>
       <h2>Final Information</h2>
       <p class="step-intro">Almost there — a couple of closing thoughts.</p>
 
@@ -723,6 +723,44 @@
       <div class="field">
         <label>Is there anything you would like the NexGen team to know?</label>
         <textarea name="anythingElse" placeholder="Optional"></textarea>
+      </div>
+    </section>
+
+    <!-- STEP 8: PAYMENT VERIFICATION -->
+    <section class="step" data-step="8">
+      <div class="step-eyebrow">Section 08</div>
+      <h2>Entry Fee &amp; Payment Verification</h2>
+      <p class="step-intro">A one-time entry fee of <strong>PKR 100</strong> is required to confirm your seat in the 30-Day Leadership Development Series. Please pay via Easypaisa to the account below, then upload your payment screenshot so we can verify it.</p>
+
+      <div class="payment-box">
+        <div class="payment-row"><span class="pk">Pay via</span><span class="pv">Easypaisa</span></div>
+        <div class="payment-row"><span class="pk">Account Title</span><span class="pv">Muhammad Ashfaq Ahmed</span></div>
+        <div class="payment-row"><span class="pk">Account Number</span><span class="pv">0324&#8209;7774957</span></div>
+        <div class="payment-row"><span class="pk">Amount</span><span class="pv">PKR 100</span></div>
+      </div>
+      <div class="payment-note">After sending the payment, fill the fields below exactly as they appear on your Easypaisa transaction, and upload a clear screenshot of the successful payment. Your registration will only be confirmed after verification.</div>
+
+      <div class="field">
+        <label for="senderName">Sender's Name (as shown on your Easypaisa account)<span class="req">*</span></label>
+        <input type="text" id="senderName" name="senderName" required placeholder="Name on the Easypaisa account you paid from">
+        <div class="field-error">Please enter the sender's name.</div>
+      </div>
+
+      <div class="field">
+        <label for="txnId">Transaction ID <span style="font-weight:400;color:var(--ink-soft);">(optional)</span></label>
+        <input type="text" id="txnId" name="txnId" placeholder="e.g. TRX123456789">
+      </div>
+
+      <div class="field">
+        <label for="paymentScreenshot">Upload Payment Screenshot<span class="req">*</span></label>
+        <div class="hint">JPG or PNG, showing the successful PKR 100 transaction to 0324‑7774957.</div>
+        <input type="file" id="paymentScreenshot" name="paymentScreenshot" accept="image/*">
+        <div class="field-error">Please upload a screenshot of your payment.</div>
+        <div class="upload-progress" id="uploadProgress">Processing screenshot…</div>
+        <div class="screenshot-preview" id="screenshotPreview">
+          <img id="screenshotPreviewImg" alt="Payment screenshot preview">
+          <div class="sp-info">Screenshot attached<small id="screenshotFileName"></small></div>
+        </div>
       </div>
     </section>
 
@@ -771,9 +809,9 @@
 <script>
 (function(){
   const sectionTitles = [
-    "Entry Fee & Payment","Your Information","Your Connection with NexGen","Why Do You Want to Join?",
+    "Your Information","Your Connection with NexGen","Why Do You Want to Join?",
     "Your Skills & Interests","Participation","Future Volunteer Opportunity",
-    "Final Information","Review & Confirm"
+    "Final Information","Entry Fee & Payment","Review & Confirm"
   ];
   const totalSteps = 9; // 9 form steps, step 10 is the done screen
   let current = 1;
@@ -900,11 +938,6 @@
     section.querySelectorAll('.field').forEach(f => f.classList.remove('invalid'));
 
     if (step === 1) {
-      const sender = document.getElementById('senderName');
-      if (!sender.value.trim()) { sender.closest('.field').classList.add('invalid'); valid = false; }
-      if (!paymentScreenshotData) { screenshotInput.closest('.field').classList.add('invalid'); valid = false; }
-    }
-    if (step === 2) {
       const requiredIds = ['fullName','city','phone','email'];
       requiredIds.forEach(id => {
         const el = document.getElementById(id);
@@ -913,6 +946,11 @@
         if (id === 'phone' && ok) ok = el.value.trim().replace(/[^0-9]/g,'').length >= 7;
         if (!ok) { el.closest('.field').classList.add('invalid'); valid = false; }
       });
+    }
+    if (step === totalSteps - 1) {
+      const sender = document.getElementById('senderName');
+      if (!sender.value.trim()) { sender.closest('.field').classList.add('invalid'); valid = false; }
+      if (!paymentScreenshotData) { screenshotInput.closest('.field').classList.add('invalid'); valid = false; }
     }
     if (step === totalSteps) {
       const consent = document.getElementById('consentCheck');
