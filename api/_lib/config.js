@@ -82,7 +82,10 @@ function getCookie(req, name) {
   return found ? decodeURIComponent(found.slice(name.length + 1)) : '';
 }
 function requireAdmin(req) { return verify(getCookie(req, 'ng_admin_session')); }
-function cookieHeader(token, maxAge) { return `ng_admin_session=${encodeURIComponent(token)}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=${maxAge}`; }
+function cookieHeader(token, maxAge) {
+  const maxAgePart = Number.isFinite(maxAge) ? ` Max-Age=${maxAge};` : '';
+  return `ng_admin_session=${encodeURIComponent(token)}; Path=/; HttpOnly; Secure; SameSite=Lax;${maxAgePart}`;
+}
 function method(req, res, allowed) { if (!allowed.includes(req.method)) { send(res, 405, { error: 'Method not allowed.' }); return false; } return true; }
 
 module.exports = { APPLICATION_STATUSES, BUCKET, cookieHeader, getSupabase, method, requireAdmin, safeString, sanitizeApplication, send, sign, validateApplication };
